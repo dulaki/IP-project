@@ -1,0 +1,99 @@
+<main class="page">
+  <header class="hero">
+    <div>
+      <h1>Top 100 Songs of 2025</h1>
+      <p class="lede">Browse and filter the top songs of 2025.</p>
+      <div class="hero-actions">
+        <a class="ghost" routerLink="/">Home</a>
+        <button class="primary" (click)="loadSongs()">Refresh list</button>
+        <button class="ghost" (click)="filters = { search: '', genre: '', type: 'all', sort: 'rank' }; loadSongs();">
+          Reset filters
+        </button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="stat">
+        <div class="label">Loaded</div>
+        <div class="value">{{ songs.length }}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Filter</div>
+        <div class="value">{{ filters.genre || 'All genres' }}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Type</div>
+        <div class="value">{{ filters.type | titlecase }}</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="panel">
+    <app-filter-bar
+      [filters]="filters"
+      [genres]="genres"
+      (filtersChange)="handleFiltersChange($event)"
+    />
+  </section>
+
+  <section class="panel">
+    <app-stats-panel [songs]="songs" />
+  </section>
+
+  <section class="panel">
+    @if (loading) {
+      <div class="loading">Loading songs...</div>
+    } @else if (error) {
+      <div class="error">{{ error }}</div>
+    } @else if (!songs.length) {
+      <div class="empty">No songs matched these filters.</div>
+    } @else {
+      <div class="grid">
+        @for (song of songs; track song.id) {
+          <app-song-card
+            [song]="song"
+            (selectSong)="selectSong(song)"
+            (previewSong)="previewSong(song)"
+          />
+        }
+      </div>
+    }
+  </section>
+
+  @if (selectedSong) {
+    <div class="modal-backdrop" (click)="selectedSong = undefined">
+      <section class="panel detail modal" (click)="$event.stopPropagation()">
+        <header class="modal-header">
+          <div>
+            <p class="eyebrow">Selected song</p>
+            <h2>{{ selectedSong.title }}</h2>
+            <p class="meta">
+              {{ selectedSong.artist }}
+              @if (selectedSong.featuredArtists.length) {
+                • ft. {{ selectedSong.featuredArtists.join(', ') }}
+              }
+            </p>
+          </div>
+          <button class="ghost close" (click)="selectedSong = undefined">×</button>
+        </header>
+        <div class="detail-body">
+          <div>
+            <div class="tag-row">
+              <span class="pill">{{ selectedSong.genre }}</span>
+              <span class="pill subtle">{{ selectedSong.type | titlecase }}</span>
+              <span class="pill subtle">Rank #{{ selectedSong.rank }}</span>
+            </div>
+            <p class="description">{{ selectedSong.description || 'No description yet.' }}</p>
+            @if (selectedSong.previewUrl) {
+              <button class="primary" (click)="previewSong(selectedSong)">Play preview</button>
+            }
+          </div>
+          <img
+            [src]="selectedSong.coverUrl || 'https://picsum.photos/seed/selected-song/400/400'"
+            [alt]="selectedSong.title"
+            class="detail-cover"
+          />
+        </div>
+      </section>
+    </div>
+  }
+</main>

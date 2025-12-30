@@ -1,0 +1,254 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(94, 234, 212, 0.12), transparent 25%),
+    #020617;
+  color: #e2e8f0;
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-size: 2.4rem;
+}
+
+.lede {
+  color: #cbd5e1;
+  max-width: 720px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.hero-actions .ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: transparent;
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.hero-actions .ghost:hover {
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: #0b1220;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 0.9rem;
+  min-width: 260px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.value {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.panel {
+  background: rgba(10, 15, 26, 0.8);
+  border: 1px solid #1e293b;
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+}
+
+.grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch;
+}
+
+.loading,
+.error,
+.empty {
+  padding: 1rem;
+  color: #cbd5e1;
+}
+
+.error {
+  color: #fca5a5;
+}
+
+.detail {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.modal {
+  max-width: 960px;
+  width: 100%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.close {
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.25rem 0.6rem;
+}
+
+.detail-body {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  font-size: 0.85rem;
+}
+
+.pill.subtle {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #cbd5e1;
+}
+
+.detail-cover {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+}
+
+.meta {
+  color: #cbd5e1;
+}
+
+.description {
+  color: #cbd5e1;
+  margin: 0.5rem 0;
+}
+
+button {
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+button.primary {
+  border-color: #38bdf8;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), rgba(16, 185, 129, 0.18));
+}
+
+button.ghost {
+  border-color: #334155;
+  background: transparent;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  border-color: #38bdf8;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .hero-card {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .panel {
+    padding: 0.85rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

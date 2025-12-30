@@ -1,0 +1,26 @@
+<section class="stats">
+  <div class="stat">
+    <div class="label">Total</div>
+    <div class="value">{{ total }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Bands</div>
+    <div class="value">{{ bandCount }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Solo Artists</div>
+    <div class="value">{{ soloCount }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Collab / Duo</div>
+    <div class="value">{{ collabDuoTotal }}</div>
+  </div>
+  <div class="stat wide">
+    <div class="label">Top Genres</div>
+    <div class="pills">
+      @for (g of topGenres; track g.genre) {
+        <span class="pill">{{ g.genre | titlecase }} ({{ g.count }})</span>
+      }
+    </div>
+  </div>
+</section>

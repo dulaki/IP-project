@@ -1,0 +1,30 @@
+<article class="song-card" (click)="selectSong.emit(song)">
+  <div class="rank">#{{ song.rank }}</div>
+  <div class="cover">
+    <img [src]="song.coverUrl || 'https://picsum.photos/seed/fallback/300/300'" [alt]="song.title" />
+  </div>
+  <div class="content">
+    <header>
+      <div class="title">{{ song.title }}</div>
+      <div class="meta">
+        <span class="artist">{{ song.artist }}</span>
+        @if (song.featuredArtists.length) {
+          <span class="feature">ft. {{ song.featuredArtists.join(', ') }}</span>
+        }
+      </div>
+    </header>
+    <div class="tags combined">
+      <span class="pill genre">{{ song.genre }}</span>
+      <span class="pill subtle">{{ song.type | titlecase }}</span>
+      @if (song.year) {
+        <span class="pill subtle">{{ song.year }}</span>
+      }
+    </div>
+    <div class="actions">
+      <button class="secondary" (click)="selectSong.emit(song); $event.stopPropagation()">Details</button>
+      @if (song.previewUrl) {
+        <button class="primary" (click)="onPreviewClick($event)">Preview</button>
+      }
+    </div>
+  </div>
+</article>

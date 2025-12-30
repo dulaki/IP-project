@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(94, 234, 212, 0.12), transparent 25%),
+    #020617;
+  color: #e2e8f0;
+}
+
+.home {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.8rem;
+}
+
+.lede {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.credits {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cta {
+  margin-top: 1rem;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #38bdf8;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), rgba(16, 185, 129, 0.18));
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+  border-color: #38bdf8;
+}
